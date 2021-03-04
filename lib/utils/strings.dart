@@ -4,34 +4,40 @@ class Strings {
     {'username': '9898989898', 'password': 'password12'},
     {'username': '9876543210', 'password': 'password12'},
   ];
+
+  static const en = 'en';
+  static const ja = 'ja';
   //login page
-  static const headderLogin = 'Welcome';
-  static const userNameHint = 'Username';
-  static const passWordHint = 'Password';
-  static const loginButton = 'Submit';
-  static const forgotPassword = 'Forgot your password?';
-  static const donthaveAccount = "Don't have an account? ";
-  static const create = 'Create';
-  static const limitEmail = 'user name can be min 3 & max 10';
-  static const limitPassword = 'password can be min 3 & max 10';
-  static const errorUsername = 'user not present';
-  static const errorPassword = 'invalid passowrd';
-  static const successLogin = 'logged in successfully';
+  static const headderLogin = 'headderLogin';
+  static const userNameHint = 'userNameHint';
+  static const passWordHint = 'passWordHint';
+  static const loginButton = 'loginButton';
+  static const forgotPassword = 'forgotPassword';
+  static const donthaveAccount = 'donthaveAccount';
+  static const create = 'create';
+  static const limitEmail = 'limitEmail';
+  static const limitPassword = 'limitPassword';
+  static const errorUsername = 'errorUsername';
+  static const errorPassword = 'errorPassword';
+  static const successLogin = 'successLogin';
 
   //home page
-  static const headerHomePage = 'Home page';
-  static const eloRating = 'Elo Rating';
-  static const tournamentWon = 'Tournaments\nwon';
-  static const tournamentPlayed = 'Tournaments\nplayed';
-  static const winingPercentage = 'Winning\npercentage';
-  static const recomendedForYou = 'Recomended for you';
-  static const successGameDataFetched = 'Game data fetched';
-  static const gameFetchedEnded = 'Game fetched limit reached';
-  static const successUserDetail = 'User Detail fetched';
-  static const logout = 'Log Out';
-  static const japnese = 'Japanese';
-  static const english = 'English';
-  static const errorGameFetchList = 'Error while loading game, tap to try agin';
-  static const flyingWolf = 'Flyingwolf';
-  static const username = 'User name';
+  static const headerHomePage = 'headerHomePage';
+  static const eloRating = 'eloRating';
+  static const tournamentWon = 'tournamentWon';
+  static const tournamentPlayed = 'tournamentPlayed';
+  static const winingPercentage = 'winingPercentage';
+  static const recomendedForYou = 'recomendedForYou';
+  static const successGameDataFetched = 'successGameDataFetched';
+  static const gameFetchedEnded = 'gameFetchedEnded';
+  static const successUserDetail = 'successUserDetail';
+  static const logout = 'logout';
+  static const japnese = 'japnese';
+  static const english = 'english';
+  static const errorGameFetchList = 'errorGameFetchList';
+  static const errorUserFetched = 'errorUserFetched';
+  static const flyingWolf = 'flyingWolf';
+  static const username = 'username';
+
+  static const supportedLocaleList = ['en', 'ja'];
 }

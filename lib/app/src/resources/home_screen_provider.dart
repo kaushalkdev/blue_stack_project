@@ -28,19 +28,19 @@ class HomeSreeenProvider {
       success(UserModel.fromJson(jsonDecode(response.body)));
     } on PlatformException catch (e) {
       failure(e.message);
-      print(e.message);
     } on HttpException catch (e) {
       failure(e.message);
-      print(e.message);
     } on TimeoutException catch (e) {
       failure(e.message);
-      print(e.message);
     } on SocketException catch (e) {
-      failure(e.message);
-      print(e.message);
+      failure(e.message ??
+          ((preferenceUtils.getString(PreferenceKeys.locale) == Strings.en)
+              ? English.errorUserFetched
+              : Japanese.errorUserFetched));
     } catch (e) {
-      failure(e.toString());
-      print(e.toString());
+      failure(preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
+          ? English.errorUserFetched
+          : Japanese.errorUserFetched);
     }
   }
 }

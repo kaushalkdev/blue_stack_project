@@ -1,5 +1,4 @@
 import 'package:bluestack_test_app/index.dart';
-import 'package:bluestack_test_app/utils/japanese.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,10 +11,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+
     homeScreenBloc.getUserDetails(
         failure: (message) {
-          _scaffoldKey.currentState
-              .showSnackBar(SnackBar(content: Text(message)));
+          _scaffoldKey.currentState.showSnackBar(
+              SnackBar(content: Text(message ?? Strings.errorUserFetched)));
         },
         success: (message) {});
     homeScreenBloc.getGameData(
@@ -71,22 +71,22 @@ class _HomeScreenState extends State<HomeScreen> {
         itemBuilder: (_) => <PopupMenuItem<String>>[
               new PopupMenuItem<String>(
                   child: Text(
-                      preferenceUtils.getString(PreferenceKeys.language) ==
-                              Strings.english
-                          ? Strings.logout
-                          : Japanese.logout),
+                    AppLocalization.of(context)
+                        .getTransaledValue(Strings.logout),
+                  ),
                   value: Strings.logout),
               new PopupMenuItem<String>(
-                  child: const Text(Strings.japnese), value: Strings.japnese),
+                  child: Text(Strings.japnese), value: Strings.ja),
               new PopupMenuItem<String>(
-                  child: const Text(Strings.english), value: Strings.english),
+                  child: Text(Strings.english), value: Strings.en),
             ],
         onSelected: (value) async {
           if (value == Strings.logout) {
             await preferenceUtils.clear();
             Widgets.navigateByReplacement(context, LoginScreen());
           } else {
-            await preferenceUtils.setString(PreferenceKeys.language, value);
+            mainAppBloc.setLocale(Locale(value));
+            await preferenceUtils.setString(PreferenceKeys.locale, value);
             setState(() {});
           }
         });

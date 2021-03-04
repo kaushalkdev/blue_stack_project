@@ -22,8 +22,8 @@ class LoginBloc {
       sink.add(userName);
     } else {
       sink.addError(
-          preferenceUtils.getString(PreferenceKeys.language) == Strings.english
-              ? Strings.limitEmail
+          preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
+              ? English.limitEmail
               : Japanese.limitEmail);
     }
   });
@@ -35,8 +35,8 @@ class LoginBloc {
       sink.add(password);
     } else {
       sink.addError(
-          preferenceUtils.getString(PreferenceKeys.language) == Strings.english
-              ? Strings.limitPassword
+          preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
+              ? English.limitPassword
               : Japanese.limitPassword);
     }
   });

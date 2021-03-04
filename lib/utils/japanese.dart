@@ -27,6 +27,7 @@ class Japanese {
   static const japnese = '日本語';
   static const english = 'English';
   static const errorGameFetchList = 'ゲームの読み込み中にエラーが発生しました。タップして開始してください';
+  static const errorUserFetched = '「ユーザーの読み込み中にエラーが発生しました」';
   static const flyingWolf = 'Flyingwolf';
   static const username = 'ユーザー名';
 }

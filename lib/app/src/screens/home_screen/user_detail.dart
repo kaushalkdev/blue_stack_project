@@ -78,7 +78,7 @@ class UserDetail extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          data?.userName ?? Strings.username,
+          data?.userName ?? English.username,
           style: TextStyle(
               fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
         ),
@@ -96,7 +96,7 @@ class UserDetail extends StatelessWidget {
           height: Widgets.getheight(context) * 0.1,
           width: Widgets.getWidth(context) * 0.3,
           child: textFields(
-            text: Strings.tournamentPlayed,
+            text: English.tournamentPlayed,
             value: data?.tournamentPlayed?.toString() ?? '',
           ),
         ),
@@ -106,7 +106,7 @@ class UserDetail extends StatelessWidget {
           width: Widgets.getWidth(context) * 0.3,
           decoration: boxDecorationTwo(),
           child: textFields(
-            text: Strings.tournamentWon,
+            text: English.tournamentWon,
             value: data?.tournamentWon?.toString() ?? '',
           ),
         ),
@@ -115,7 +115,7 @@ class UserDetail extends StatelessWidget {
           height: Widgets.getheight(context) * 0.1,
           width: Widgets.getWidth(context) * 0.3,
           child: textFields(
-            text: Strings.winingPercentage,
+            text: English.winingPercentage,
             value: data?.winningPercentage?.toString() ?? '',
           ),
         ),
@@ -192,7 +192,7 @@ class UserDetail extends StatelessWidget {
           ),
           SizedBox(width: 7),
           Text(
-            Strings.eloRating,
+            English.eloRating,
             style: TextStyle(
               fontSize: 12,
               color: Colors.black87,

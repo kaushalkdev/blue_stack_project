@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   cupertino_icons: ^1.0.0
   rxdart: ^0.25.0
@@ -26,9 +28,8 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/game_tv.jpeg
-    - images/game_tv_icon.jpeg
-    - images/game_tv_icon_white.png
+    - images/
+    - lang/
   # fonts:
   #   - family: Schyler
   #     fonts:

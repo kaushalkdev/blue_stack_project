@@ -1,3 +1,4 @@
+import 'package:bluestack_test_app/app/src/blocs/main_app_bloc.dart';
 import 'package:bluestack_test_app/index.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -7,6 +8,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,9 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
       elevation: 0,
       centerTitle: true,
       title: Text(
-        preferenceUtils.getString(PreferenceKeys.language) == Strings.english
-            ? Strings.headderLogin
-            : Japanese.headderLogin,
+        AppLocalization.of(context).getTransaledValue(Strings.headderLogin),
         style: TextStyle(
           fontSize: 16,
           color: Colors.black,
@@ -58,13 +58,13 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         itemBuilder: (_) => <PopupMenuItem<String>>[
               new PopupMenuItem<String>(
-                  child: const Text(Strings.japnese), value: Strings.japnese),
+                  child: const Text(Strings.japnese), value: Strings.ja),
               new PopupMenuItem<String>(
-                  child: const Text(Strings.english), value: Strings.english),
+                  child: const Text(Strings.english), value: Strings.en),
             ],
         onSelected: (value) async {
-          await preferenceUtils.setString(PreferenceKeys.language, value);
-          setState(() {});
+          mainAppBloc.setLocale(Locale(value));
+          await preferenceUtils.setString(PreferenceKeys.locale, value);
         });
   }
 
@@ -86,9 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
       padding: EdgeInsets.only(right: 30, top: 20),
       alignment: Alignment.centerRight,
       child: Text(
-        preferenceUtils.getString(PreferenceKeys.language) == Strings.english
-            ? Strings.forgotPassword
-            : Japanese.forgotPassword,
+        AppLocalization.of(context).getTransaledValue(Strings.forgotPassword),
         style: TextStyle(fontSize: 12, color: Colors.grey),
       ),
     );
@@ -122,10 +120,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.only(
                     top: 10.0, right: 10, left: 10, bottom: 10),
                 child: Text(
-                  preferenceUtils.getString(PreferenceKeys.language) ==
-                          Strings.english
-                      ? Strings.loginButton
-                      : Japanese.loginButton,
+                  AppLocalization.of(context)
+                      .getTransaledValue(Strings.loginButton),
                   style: TextStyle(
                     color: Colors.white,
                   ),
@@ -213,13 +209,10 @@ class _LoginScreenState extends State<LoginScreen> {
           onChanged: loginBloc.changePassword,
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
-            border: InputBorder.none,
-            counter: Container(),
-            hintText: preferenceUtils.getString(PreferenceKeys.language) ==
-                    Strings.english
-                ? Strings.passWordHint
-                : Japanese.passWordHint,
-          ),
+              border: InputBorder.none,
+              counter: Container(),
+              hintText: AppLocalization.of(context)
+                  .getTransaledValue(Strings.passWordHint)),
         ),
       ),
     );
@@ -301,10 +294,8 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: InputDecoration(
             counter: Container(),
             border: InputBorder.none,
-            hintText: preferenceUtils.getString(PreferenceKeys.language) ==
-                    Strings.english
-                ? Strings.userNameHint
-                : Japanese.username,
+            hintText: AppLocalization.of(context)
+                .getTransaledValue(Strings.userNameHint),
           ),
         ),
       ),

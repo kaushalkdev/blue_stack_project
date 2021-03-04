@@ -10,10 +10,8 @@ class RecommendedForYou extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20.0, top: 18, bottom: 18),
           child: Text(
-            preferenceUtils.getString(PreferenceKeys.language) ==
-                    Strings.english
-                ? Strings.recomendedForYou
-                : Japanese.recomendedForYou,
+            AppLocalization.of(context)
+                .getTransaledValue(Strings.recomendedForYou),
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

@@ -8,26 +8,17 @@ class PreferenceUtils {
   }
 
   //setters
-  Future<bool> setBool(String key, bool value) async {
-    return await _sharedPreferences.setBool(key, value);
-  }
+  Future<bool> setBool(String key, bool value) async =>
+      await _sharedPreferences.setBool(key, value);
 
-  Future<bool> setString(String key, String value) async {
-    return await _sharedPreferences.setString(key, value);
-  }
+  Future<bool> setString(String key, String value) async =>
+      await _sharedPreferences.setString(key, value);
 
-  Future<bool> clear() async {
-    return await _sharedPreferences.clear();
-  }
+  Future<bool> clear() async => await _sharedPreferences.clear();
 
   //getters
-  bool getBool(String key) {
-    return _sharedPreferences.getBool(key);
-  }
-
-  String getString(String key) {
-    return _sharedPreferences.getString(key);
-  }
+  bool getBool(String key) => _sharedPreferences.getBool(key);
+  String getString(String key) => _sharedPreferences.getString(key);
 }
 
 var preferenceUtils = PreferenceUtils();

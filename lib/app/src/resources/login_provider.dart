@@ -14,23 +14,20 @@ class LoginProvider {
     // success if user found with creds
     if (res >= 0) {
       if (Strings.userCredmap[res]['password'] == password) {
-        success(preferenceUtils.getString(PreferenceKeys.language) ==
-                Strings.english
-            ? Strings.successLogin
+        success(preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
+            ? English.successLogin
             : Japanese.successLogin);
         //setting login status
         _setLoginFlag(true);
       } else {
-        failure(preferenceUtils.getString(PreferenceKeys.language) ==
-                Strings.english
-            ? Strings.errorPassword
+        failure(preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
+            ? English.errorPassword
             : Japanese.errorPassword);
       }
     } else {
-      failure(
-          preferenceUtils.getString(PreferenceKeys.language) == Strings.english
-              ? Strings.errorUsername
-              : Japanese.errorUsername);
+      failure(preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
+          ? English.errorUsername
+          : Japanese.errorUsername);
     }
   }
 
