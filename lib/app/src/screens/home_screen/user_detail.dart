@@ -97,7 +97,7 @@ class UserDetail extends StatelessWidget {
           width: Widgets.getWidth(context) * 0.3,
           child: textFields(
             text: English.tournamentPlayed,
-            value: data?.tournamentPlayed?.toString() ?? '',
+            value: data?.tournamentPlayed?.toString() ?? '0',
           ),
         ),
         Container(
@@ -107,7 +107,7 @@ class UserDetail extends StatelessWidget {
           decoration: boxDecorationTwo(),
           child: textFields(
             text: English.tournamentWon,
-            value: data?.tournamentWon?.toString() ?? '',
+            value: data?.tournamentWon?.toString() ?? '0',
           ),
         ),
         Container(
@@ -116,7 +116,7 @@ class UserDetail extends StatelessWidget {
           width: Widgets.getWidth(context) * 0.3,
           child: textFields(
             text: English.winingPercentage,
-            value: data?.winningPercentage?.toString() ?? '',
+            value: '${data?.winningPercentage ?? 0}%',
           ),
         ),
       ],
