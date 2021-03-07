@@ -33,11 +33,9 @@ export 'package:bluestack_test_app/app/src/resources/repository.dart';
 export 'package:bluestack_test_app/utils/strings.dart';
 export 'package:bluestack_test_app/utils/widgets.dart';
 export 'package:bluestack_test_app/utils/images.dart';
-export 'package:bluestack_test_app/utils/apis/api_urls.dart';
-export 'package:bluestack_test_app/utils/preference_keys.dart';
-export 'package:bluestack_test_app/utils/preference_utils.dart';
-export 'package:bluestack_test_app/utils/japanese.dart';
-export 'package:bluestack_test_app/utils/english.dart';
+export 'package:bluestack_test_app/apis/api_urls.dart';
+export 'package:bluestack_test_app/shared_prefs/preference_keys.dart';
+export 'package:bluestack_test_app/shared_prefs/preference_utils.dart';
 
 //third party packges
 export 'package:http/http.dart';

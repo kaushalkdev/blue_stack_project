@@ -33,14 +33,10 @@ class HomeSreeenProvider {
     } on TimeoutException catch (e) {
       failure(e.message);
     } on SocketException catch (e) {
-      failure(e.message ??
-          ((preferenceUtils.getString(PreferenceKeys.locale) == Strings.en)
-              ? English.errorUserFetched
-              : Japanese.errorUserFetched));
+      failure(
+          e.message ?? mainAppBloc.getLanguageMap[Strings.errorUserFetched]);
     } catch (e) {
-      failure(preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
-          ? English.errorUserFetched
-          : Japanese.errorUserFetched);
+      failure(mainAppBloc.getLanguageMap[Strings.errorUserFetched]);
     }
   }
 }
