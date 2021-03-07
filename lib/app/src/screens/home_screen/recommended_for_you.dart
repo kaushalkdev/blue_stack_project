@@ -9,12 +9,14 @@ class RecommendedForYou extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 20.0, top: 18, bottom: 18),
-          child: Text(
-            AppLocalization.of(context)
-                .getTransaledValue(Strings.recomendedForYou),
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+          child: StreamBuilder(
+            stream: mainAppBloc.getLanguageMapStream,
+            builder: (context, snapshot) => Text(
+              snapshot.data[Strings.recomendedForYou],
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

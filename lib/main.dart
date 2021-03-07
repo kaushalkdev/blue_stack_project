@@ -4,6 +4,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await preferenceUtils.init();
-  mainAppBloc.init();
+  await mainAppBloc.init();
   runApp(BlueStackApp());
 }

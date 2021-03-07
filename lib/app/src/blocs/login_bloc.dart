@@ -21,10 +21,7 @@ class LoginBloc {
     if (userName.length > 3) {
       sink.add(userName);
     } else {
-      sink.addError(
-          preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
-              ? English.limitEmail
-              : Japanese.limitEmail);
+      sink.addError(mainAppBloc.getLanguageMap[Strings.limitEmail]);
     }
   });
 
@@ -34,10 +31,7 @@ class LoginBloc {
     if (password.length > 3) {
       sink.add(password);
     } else {
-      sink.addError(
-          preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
-              ? English.limitPassword
-              : Japanese.limitPassword);
+      sink.addError(mainAppBloc.getLanguageMap[Strings.limitPassword]);
     }
   });
   Future<void> userLogin(

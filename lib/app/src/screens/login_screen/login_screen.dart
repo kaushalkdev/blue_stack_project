@@ -38,12 +38,15 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       elevation: 0,
       centerTitle: true,
-      title: Text(
-        AppLocalization.of(context).getTransaledValue(Strings.headderLogin),
-        style: TextStyle(
-          fontSize: 16,
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
+      title: StreamBuilder(
+        stream: mainAppBloc.getLanguageMapStream,
+        builder: (context, snapshot) => Text(
+          snapshot.data[Strings.headderLogin],
+          style: const TextStyle(
+            fontSize: 16,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       actions: [language()],
@@ -64,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
         onSelected: (value) async {
           mainAppBloc.setLocale(Locale(value));
+          await mainAppBloc.load();
           await preferenceUtils.setString(PreferenceKeys.locale, value);
         });
   }
@@ -85,9 +89,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       padding: EdgeInsets.only(right: 30, top: 20),
       alignment: Alignment.centerRight,
-      child: Text(
-        AppLocalization.of(context).getTransaledValue(Strings.forgotPassword),
-        style: TextStyle(fontSize: 12, color: Colors.grey),
+      child: StreamBuilder(
+        stream: mainAppBloc.getLanguageMapStream,
+        builder: (context, snapshot) => Text(
+          snapshot.data[Strings.forgotPassword],
+          style: TextStyle(fontSize: 12, color: Colors.grey),
+        ),
       ),
     );
   }
@@ -119,11 +126,13 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(
                     top: 10.0, right: 10, left: 10, bottom: 10),
-                child: Text(
-                  AppLocalization.of(context)
-                      .getTransaledValue(Strings.loginButton),
-                  style: TextStyle(
-                    color: Colors.white,
+                child: StreamBuilder(
+                  stream: mainAppBloc.getLanguageMapStream,
+                  builder: (context, snapshot) => Text(
+                    mainAppBloc.getLanguageMap[Strings.loginButton],
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -187,10 +196,15 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.red,
             ),
           );
-        } else {
+        } else if (snapshot.hasData && !snapshot.hasError) {
           return Icon(
             Icons.check,
             color: Colors.green,
+          );
+        } else {
+          return Icon(
+            Icons.keyboard,
+            color: Colors.yellow,
           );
         }
       },
@@ -209,10 +223,10 @@ class _LoginScreenState extends State<LoginScreen> {
           onChanged: loginBloc.changePassword,
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
-              border: InputBorder.none,
-              counter: Container(),
-              hintText: AppLocalization.of(context)
-                  .getTransaledValue(Strings.passWordHint)),
+            border: InputBorder.none,
+            counter: Container(),
+            hintText: mainAppBloc.getLanguageMap[Strings.passWordHint],
+          ),
         ),
       ),
     );
@@ -270,10 +284,15 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.red,
             ),
           );
-        } else {
+        } else if (snapshot.hasData && !snapshot.hasError) {
           return Icon(
             Icons.check,
             color: Colors.green,
+          );
+        } else {
+          return Icon(
+            Icons.keyboard,
+            color: Colors.yellow,
           );
         }
       },
@@ -294,8 +313,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: InputDecoration(
             counter: Container(),
             border: InputBorder.none,
-            hintText: AppLocalization.of(context)
-                .getTransaledValue(Strings.userNameHint),
+            hintText: mainAppBloc.getLanguageMap[Strings.userNameHint],
           ),
         ),
       ),

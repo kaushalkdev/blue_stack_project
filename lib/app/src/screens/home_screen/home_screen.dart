@@ -71,8 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
         itemBuilder: (_) => <PopupMenuItem<String>>[
               new PopupMenuItem<String>(
                   child: Text(
-                    AppLocalization.of(context)
-                        .getTransaledValue(Strings.logout),
+                    mainAppBloc.getLanguageMap[Strings.logout],
                   ),
                   value: Strings.logout),
               new PopupMenuItem<String>(
@@ -86,8 +85,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Widgets.navigateByReplacement(context, LoginScreen());
           } else {
             mainAppBloc.setLocale(Locale(value));
+            await mainAppBloc.load();
             await preferenceUtils.setString(PreferenceKeys.locale, value);
-            setState(() {});
           }
         });
   }

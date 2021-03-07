@@ -1,5 +1,4 @@
 import 'package:bluestack_test_app/index.dart';
-import 'package:bluestack_test_app/utils/english.dart';
 
 class HomeScreenBloc {
   var _repository = Repository();
@@ -37,15 +36,12 @@ class HomeScreenBloc {
           if (_cursor != gameModel.data.cursor) {
             _cursor = gameModel.data.cursor;
 
-            success(
-                preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
-                    ? English.successGameDataFetched
-                    : Japanese.successGameDataFetched);
+            success(mainAppBloc.getLanguageMap[Strings.successGameDataFetched]);
             _tournamentList.addAll(gameModel.data.tournaments);
             setTournamentList(_tournamentList);
             _isLoadingGameLoading.sink.add(false);
           } else {
-            failure(Strings.gameFetchedEnded);
+            failure(mainAppBloc.getLanguageMap[Strings.gameFetchedEnded]);
             _isLoadingGameLoading.sink.add(false);
           }
         });
@@ -56,9 +52,7 @@ class HomeScreenBloc {
     await _repository.getUserDetails(
         success: (userModel) {
           _userModel.sink.add(userModel);
-          success(preferenceUtils.getString(PreferenceKeys.locale) == Strings.en
-              ? English.successUserDetail
-              : Japanese.successUserDetail);
+          success(mainAppBloc.getLanguageMap[Strings.successUserDetail]);
         },
         failure: failure);
   }
