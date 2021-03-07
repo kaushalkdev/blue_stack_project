@@ -31,7 +31,7 @@ export 'package:bluestack_test_app/app/src/resources/repository.dart';
 
 //utils
 export 'package:bluestack_test_app/utils/strings.dart';
-export 'package:bluestack_test_app/utils/widgets.dart';
+export 'package:bluestack_test_app/utils/common_widgets.dart';
 export 'package:bluestack_test_app/utils/images.dart';
 export 'package:bluestack_test_app/apis/api_urls.dart';
 export 'package:bluestack_test_app/shared_prefs/preference_keys.dart';
